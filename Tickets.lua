@@ -44,7 +44,7 @@ function GMGenie.Tickets.refresh()
         GMGenie.Tickets.tempList = {};
         GMGenie.Tickets.idToNum = {};
         GMGenie.Tickets.tickets = 0;
-        GMGenie.Tickets.onlineTickets = 0;
+        GMGenie.Tickets.onlineTickets = -1;			-- Hades LUL
         GMGenie.Tickets.loadingOnline = false;
         -- get ticket list
         SendChatMessage(".ticket list", "GUILD");
@@ -54,6 +54,12 @@ function GMGenie.Tickets.refresh()
         SendChatMessage(".ticket onlinelist", "GUILD");
         Chronos.scheduleByName('ticketreupdate', 3, GMGenie.Tickets.update);
     end
+	-- by Faldal
+	if GMGenie.Tickets.onlineTickets < 0 then
+	GMGenie.Tickets.onlineTickets = 0;
+	end
+	-- end Faldal
+	
 end
 
 -- add ticket from chat list to the addon list
@@ -65,7 +71,7 @@ function GMGenie.Tickets.listTicket(ticketId, name, createStr, createStamp, last
         GMGenie.Tickets.tickets = GMGenie.Tickets.tickets + 1;
         GMGenie.Tickets.idToNum[ticketId] = GMGenie.Tickets.tickets;
     elseif GMGenie.Tickets.tempList and GMGenie.Tickets.loadingOnline then
-        GMGenie.Tickets.onlineTickets = GMGenie.Tickets.onlineTickets + 1;
+        GMGenie.Tickets.onlineTickets = GMGenie.Tickets.onlineTickets + 1/2;
         if GMGenie.Tickets.idToNum[ticketId] then
             GMGenie.Tickets.tempList[GMGenie.Tickets.idToNum[ticketId]] = ticketInfo;
         else
@@ -161,6 +167,10 @@ end
 function GMGenie.Tickets.updateView()
     -- Page x of y (z tickets)
     local offlineCount = GMGenie.Tickets.tickets - GMGenie.Tickets.onlineTickets;
+	-- by Faldal
+	if offlineCount < 0 then
+	offlineCount = 0;
+	end
 
     local plural = { ["total"] = "s", ["online"] = "s", ["offline"] = "s" };
     if GMGenie.Tickets.onlineTickets == 1 then
