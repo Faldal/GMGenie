@@ -59,7 +59,6 @@ function GMGenie.Tickets.refresh()
 	GMGenie.Tickets.onlineTickets = 0;
 	end
 	-- end Faldal
-	
 end
 
 -- add ticket from chat list to the addon list
@@ -171,6 +170,7 @@ function GMGenie.Tickets.updateView()
 	if offlineCount < 0 then
 	offlineCount = 0;
 	end
+	-- end Faldal
 
     local plural = { ["total"] = "s", ["online"] = "s", ["offline"] = "s" };
     if GMGenie.Tickets.onlineTickets == 1 then
