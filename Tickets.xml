@@ -470,6 +470,18 @@
                         GMGenie.Tickets.respond();
                         end
                     </OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_NONE");
+						GameTooltip:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -CONTAINER_OFFSET_X - 13,
+						CONTAINER_OFFSET_Y);
+						GameTooltip:AddLine("Response");
+						GameTooltip:AddLine("READ THE GUIDE BEFORE USING!");
+						GameTooltip:AddLine("You can find it under Pinned Messages in the GM channel on discord.");
+						GameTooltip:Show();
+             </OnEnter>
+             <OnLeave>
+                GameTooltip:Hide();
+              </OnLeave>
                 </Scripts>
             </Button>
 		
@@ -588,6 +600,19 @@
                 GMGenie.loadWindow(self, 'Respond', false, nil);
                 getglobal(self:GetName().."_Title_Text"):SetText("Response");
             </OnLoad>
+			<OnEnter>
+                GameTooltip:SetOwner(self, "ANCHOR_NONE");
+                GameTooltip:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -CONTAINER_OFFSET_X - 13,
+                CONTAINER_OFFSET_Y);
+                GameTooltip:AddLine("If you just have one line of text you can press send.");
+                GameTooltip:AddLine("If you want to add multiple lines of text you need to press Enter after every line.");
+                GameTooltip:AddLine("YOU ALSO NEED TO PRESS ENTER AFTER YOUR LAST LINE!");
+				GameTooltip:AddLine("Only then you can press Send.");
+                GameTooltip:Show();
+             </OnEnter>
+             <OnLeave>
+                GameTooltip:Hide();
+              </OnLeave>
         </Scripts>
         <Frames>
             <EditBox name="$parent_Respond" enableMouse="true" inherits="GMGenie_Input_Text">
@@ -615,6 +640,19 @@
                     <OnClick>
                         GMGenie.Tickets.responsesend();
                     </OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_NONE");
+						GameTooltip:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -CONTAINER_OFFSET_X - 13,
+						CONTAINER_OFFSET_Y);
+						GameTooltip:AddLine("If you just have one line of text you can press send.");
+						GameTooltip:AddLine("If you want to add multiple lines of text you need to press Enter after every line.");
+						GameTooltip:AddLine("YOU ALSO NEED TO PRESS ENTER AFTER YOUR LAST LINE!");
+						GameTooltip:AddLine("Only then you can press Send.");
+						GameTooltip:Show();
+             </OnEnter>
+             <OnLeave>
+                GameTooltip:Hide();
+              </OnLeave>
                 </Scripts>
             </Button>
         </Frames>
