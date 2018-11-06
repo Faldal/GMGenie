@@ -44,7 +44,7 @@ function GMGenie.Tickets.refresh()
         GMGenie.Tickets.tempList = {};
         GMGenie.Tickets.idToNum = {};
         GMGenie.Tickets.tickets = 0;
-        GMGenie.Tickets.onlineTickets = -1;			-- Hades LUL
+		GMGenie.Tickets.onlineTickets = 0;
         GMGenie.Tickets.loadingOnline = false;
         -- get ticket list
         SendChatMessage(".ticket list", "GUILD");
@@ -70,7 +70,8 @@ function GMGenie.Tickets.listTicket(ticketId, name, createStr, createStamp, last
         GMGenie.Tickets.tickets = GMGenie.Tickets.tickets + 1;
         GMGenie.Tickets.idToNum[ticketId] = GMGenie.Tickets.tickets;
     elseif GMGenie.Tickets.tempList and GMGenie.Tickets.loadingOnline then
-        GMGenie.Tickets.onlineTickets = GMGenie.Tickets.onlineTickets + 1/2;
+        --GMGenie.Tickets.onlineTickets = GMGenie.Tickets.onlineTickets + 1;
+		GMGenie.Tickets.onlineTickets = GMGenie.Tickets.onlineTickets + 1/2;		-- Hades LUL
         if GMGenie.Tickets.idToNum[ticketId] then
             GMGenie.Tickets.tempList[GMGenie.Tickets.idToNum[ticketId]] = ticketInfo;
         else
@@ -171,7 +172,6 @@ function GMGenie.Tickets.updateView()
 	offlineCount = 0;
 	end
 	-- end Faldal
-
     local plural = { ["total"] = "s", ["online"] = "s", ["offline"] = "s" };
     if GMGenie.Tickets.onlineTickets == 1 then
         plural["online"] = "";
