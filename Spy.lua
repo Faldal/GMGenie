@@ -219,6 +219,13 @@ function GMGenie.Spy.loadDropdown(_, level)
     info.text = 'Ban Info';
     info.func = GMGenie.Spy.banInfo;
     UIDropDownMenu_AddButton(info, level);
+	
+	local info = UIDropDownMenu_CreateInfo();
+    info.hasArrow = false;
+    info.notCheckable = true;
+    info.text = 'Mute Info';
+    info.func = GMGenie.Spy.muteInfo;
+    UIDropDownMenu_AddButton(info, level);
 
     local info = UIDropDownMenu_CreateInfo();
     info.hasArrow = false;
@@ -289,8 +296,13 @@ end
 function GMGenie.Spy.banInfo()
     CloseDropDownMenus()
     SendChatMessage(".baninfo account " .. GMGenie.Spy.currentRequest["account"], "GUILD");
-    SendChatMessage(".baninfo character " .. GMGenie.Spy.currentRequest["name"], "GUILD");
+    --SendChatMessage(".baninfo character " .. GMGenie.Spy.currentRequest["name"], "GUILD");
     SendChatMessage(".baninfo ip " .. GMGenie.Spy.currentRequest["ip"], "GUILD");
+end
+
+function GMGenie.Spy.muteInfo()
+    CloseDropDownMenus()
+    SendChatMessage(".muteinfo account " .. GMGenie.Spy.currentRequest["account"], "GUILD");
 end
 
 function GMGenie.Spy.lookupPlayer()
