@@ -226,6 +226,13 @@ function GMGenie.Spy.loadDropdown(_, level)
     info.text = 'Lookup Player';
     info.func = GMGenie.Spy.lookupPlayer;
     UIDropDownMenu_AddButton(info, level);
+	
+	local info = UIDropDownMenu_CreateInfo();
+    info.hasArrow = false;
+    info.notCheckable = true;
+    info.text = 'Lookup IP';
+    info.func = GMGenie.Spy.lookupPlayerIp;
+    UIDropDownMenu_AddButton(info, level);
 end
 
 SLASH_SPY1 = "/spy";
@@ -290,6 +297,11 @@ function GMGenie.Spy.lookupPlayer()
     CloseDropDownMenus()
     SendChatMessage(".lookup player account " .. GMGenie.Spy.currentRequest["account"], "GUILD");
     SendChatMessage(".lookup player email " .. GMGenie.Spy.currentRequest["email"], "GUILD");
+    --SendChatMessage(".lookup player ip " .. GMGenie.Spy.currentRequest["ip"], "GUILD");
+end
+
+function GMGenie.Spy.lookupPlayerIp()
+    CloseDropDownMenus()
     SendChatMessage(".lookup player ip " .. GMGenie.Spy.currentRequest["ip"], "GUILD");
 end
 
