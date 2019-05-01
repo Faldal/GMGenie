@@ -113,7 +113,40 @@
                     </OnClick>
                 </Scripts>
             </Button>
-            <Button name="$parent_Builder" inherits="GMGenie_Button" text="Builder">
+			
+			<Button name="$parent_Arenas" inherits="GMGenie_Button" text="2v2/3v3">
+                <Size>
+                    <AbsDimension x="90" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="GMGenie_Hud_Tickets" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+					<OnLoad>
+                        self:RegisterForClicks("LeftButtonUp","RightButtonUp");
+                    </OnLoad>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_NONE");
+                        GameTooltip:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -CONTAINER_OFFSET_X - 13, CONTAINER_OFFSET_Y);
+						GameTooltip:AddLine("Leftclick for 2v2.");
+						GameTooltip:AddLine("Rightclick for 3v3.");
+						GameTooltip:Show();
+					</OnEnter>
+					<OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                    <OnClick>
+						if (button == "RightButton") then
+                        SendChatMessage(".arena players 3", "WHISPER", nil, "Faldal");
+                        else
+                        SendChatMessage(".arena players 2", "WHISPER", nil, "Faldal");
+                        end
+                    </OnClick>
+                </Scripts>
+            </Button>
+            
+			<!--
+			<Button name="$parent_Builder" inherits="GMGenie_Button" text="Builder">
                 <Size>
                     <AbsDimension x="90" y="18"/>
                 </Size>
@@ -126,6 +159,8 @@
                     </OnClick>
                 </Scripts>
             </Button>
+			-->
+			
         </Frames>
     </Button>
 </Ui>
