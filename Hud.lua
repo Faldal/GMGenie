@@ -40,15 +40,16 @@ end
 ------------ HUD status functionality ------------
 --------------------------------------------------
 function GMGenie.Hud.checkStatus()
-	SendChatMessage(".gm on", "WHISPER", nil, "Faldal");
+    SendChatMessage(".gm on", "WHISPER", nil, "Faldal");
     SendChatMessage(".gm chat on", "WHISPER", nil, "Faldal");
     SendChatMessage(".gm vis", "WHISPER", nil, "Faldal");
     SendChatMessage(".au 37800", "WHISPER", nil, "Faldal");
     SendChatMessage(".whispers off", "WHISPER", nil, "Faldal");
-    SendChatMessage(".mod speed 5", "WHISPER", nil, "Faldal");
+    SendChatMessage(".mod speed 10", "WHISPER", nil, "Faldal");
     SendChatMessage(".gm fly on", "WHISPER", nil, "Faldal");
+	SendChatMessage(".complaint list", "WHISPER", nil, "Faldal");
     SendChatMessage(".fishbots", "WHISPER", nil, "Faldal");
-    SendChatMessage(".bots", "WHISPER", nil, "Faldal");
+	SendChatMessage(".bots", "WHISPER", nil, "Faldal");
 end
 
 function GMGenie.Hud.gmStatus(status)
