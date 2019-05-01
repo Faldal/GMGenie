@@ -2,19 +2,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/
  http://wowprogramming.com/FrameXML/UI.xsd">
-    <Font name="GenieFontNormalSmall" inherits="SystemFont_Shadow_Small" virtual="true">
+    <Font name="GenieFontNormalSmall" inherits="ChatFontSmall" virtual="true">
         <Color r="0.75" g="0.75" b="1" a="1"/>
     </Font>
-    <Font name="GenieFontDisabledSmall" inherits="SystemFont_Shadow_Small" virtual="true">
+    <Font name="GenieFontDisabledSmall" inherits="ChatFontSmall" virtual="true">
         <Color r="0.75" g="0.75" b="1" a="0.5"/>
     </Font>
-    <Font name="GenieFontHighlightSmall" inherits="SystemFont_Shadow_Small" virtual="true">
+    <Font name="GenieFontHighlightSmall" inherits="ChatFontSmall" virtual="true">
         <Color r="1" g="1" b="1" a="1"/>
     </Font>
-    <Font name="GenieFontRedSmall" inherits="SystemFont_Shadow_Small" virtual="true">
+    <Font name="GenieFontRedSmall" inherits="ChatFontSmall" virtual="true">
         <Color r="1" g="0.5" b="0.5" a="1"/>
     </Font>
-    <Font name="GenieFontRedDisabledSmall" inherits="SystemFont_Shadow_Small" virtual="true">
+    <Font name="GenieFontRedDisabledSmall" inherits="ChatFontSmall" virtual="true">
         <Color r="1" g="0.5" b="0.5" a="0.5"/>
     </Font>
 
