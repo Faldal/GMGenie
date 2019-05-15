@@ -504,9 +504,12 @@ end
 
 -- Response Send by Faldal
 function GMGenie.Tickets.responsesend()
+	GMGenie.Tickets.appendln();
     SendChatMessage(".ticket response append " .. GMGenie.Tickets.currentTicket["ticketId"] .. " " .. GMGenie_Tickets_ResponsePopup_Respond:GetText(), "GUILD");
 	SendChatMessage(".ticket complete " .. GMGenie.Tickets.currentTicket["ticketId"] , "GUILD");
 	GMGenie_Tickets_ResponsePopup:Hide();
+	GMGenie.Tickets.showMessage();
+	SendChatMessage(".ticket comment " .. GMGenie.Tickets.currentTicket["ticketId"] .. " " .. "RESPONSE!");
 end
 
 -- Response Appendln by Faldal
