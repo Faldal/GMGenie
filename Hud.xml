@@ -27,7 +27,7 @@
 
     <Button name="GMGenie_Hud" inherits="GMGenie_Window" hidden="false">
         <Size>
-            <AbsDimension x="100" y="158"/>
+            <AbsDimension x="100" y="175"/>
         </Size>
         <Anchors>
             <Anchor point="TOPRIGHT" relativeTo="MinimapCluster" relativePoint="BOTTOMRIGHT"/>
@@ -160,6 +160,19 @@
                 </Scripts>
             </Button>
 			-->
+			<Button name="$parent_Complaints" inherits="GMGenie_Button" text="Complaints">
+                <Size>
+                    <AbsDimension x="90" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="GMGenie_Hud_Arenas" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+						cShowComplaintSystem()
+                    </OnClick>
+                </Scripts>
+            </Button>
 			
         </Frames>
     </Button>
