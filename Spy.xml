@@ -167,7 +167,8 @@
                     </EditBox>
                 </Frames>
             </Frame>
-            <Frame name="$parent_Email">
+            <!-- <Frame name="$parent_Email"> -->
+			<Frame name="$parent_Fingerprint">
                 <Size>
                     <AbsDimension x="220" y="19"/>
                 </Size>
@@ -176,7 +177,7 @@
                 </Anchors>
                 <Layers>
                     <Layer>
-                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="E-mail:" justifyH="LEFT">
+                        <FontString name="$parent_Title" inherits="GenieFontNormalSmall" text="Fingerprint:" justifyH="LEFT">
                             <Anchors>
                                 <Anchor point="LEFT">
                                     <Offset>
@@ -188,7 +189,8 @@
                     </Layer>
                 </Layers>
                 <Frames>
-                    <EditBox name="$parent_Email" inherits="GMGenie_Spy_Uneditable">
+                    <!-- <EditBox name="$parent_Email" inherits="GMGenie_Spy_Uneditable"> -->
+					<EditBox name="$parent_Fingerprint" inherits="GMGenie_Spy_Uneditable">
                         <Size>
                             <AbsDimension x="160" y="18"/>
                         </Size>
@@ -207,7 +209,8 @@
                     <AbsDimension x="220" y="19"/>
                 </Size>
                 <Anchors>
-                    <Anchor point="TOP" relativeTo="GMGenie_Spy_InfoWindow_Email" relativePoint="BOTTOM"/>
+                    <!-- <Anchor point="TOP" relativeTo="GMGenie_Spy_InfoWindow_Email" relativePoint="BOTTOM"/> -->
+					<Anchor point="TOP" relativeTo="GMGenie_Spy_InfoWindow_Fingerprint" relativePoint="BOTTOM"/>
                 </Anchors>
                 <Layers>
                     <Layer>

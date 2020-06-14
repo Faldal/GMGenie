@@ -22,11 +22,11 @@ function GMGenie.Spy.spy(name)
     end
     if name and string.len(name) > 1 then
         GMGenie.Spy.waitingForPin = true;
-        GMGenie.Spy.currentRequest = { account = "", accountId = "", class = "", email = "", gmLevel = "", guid = "", guild = "", guild2 = "", ip = "", latency = "", level = "", location = "", login = "", money = "", name = "", phase = "", playedTime = "", race = "" };
+        --GMGenie.Spy.currentRequest = { account = "", accountId = "", class = "", email = "", gmLevel = "", guid = "", guild = "", guild2 = "", ip = "", latency = "", level = "", location = "", login = "", money = "", name = "", phase = "", playedTime = "", race = "" };
+		GMGenie.Spy.currentRequest = { account = "", accountId = "", class = "", fingerprint = "", gmLevel = "", guid = "", guild = "", guild2 = "", ip = "", latency = "", level = "", location = "", login = "", money = "", name = "", phase = "", playedTime = "", race = "" };
         GMGenie.Spy.clearCache();
         GMGenie.Spy.resetBoxes();
         GMGenie.Spy.currentRequest["name"] = name;
-
         GMGenie.Spy.clearCache();
         SendChatMessage(".pin " .. name, "GUILD");
     else
@@ -64,6 +64,12 @@ function GMGenie.Spy.processPin03(account, accountId, gmLevel, pin)
     GMGenie.Spy.addToCache(pin);
 end
 
+function GMGenie.Spy.processPin20(fingerprint, pin)
+    GMGenie.Spy.currentRequest["fingerprint"] = fingerprint;
+
+    GMGenie.Spy.addToCache(pin);
+end
+
 function GMGenie.Spy.processPin04(login, failedLogins, pin)
     GMGenie.Spy.currentRequest["login"] = login;
     -- todo failedLogins
@@ -78,11 +84,13 @@ function GMGenie.Spy.processPin05(os, latency, pin)
     GMGenie.Spy.addToCache(pin);
 end
 
+--[[
 function GMGenie.Spy.processPin06(email, pin)
     GMGenie.Spy.currentRequest["email"] = email;
 
     GMGenie.Spy.addToCache(pin);
 end
+--]]
 
 function GMGenie.Spy.processPin07(ip, locked, pin)
     GMGenie.Spy.currentRequest["ip"] = ip;
@@ -195,7 +203,8 @@ function GMGenie.Spy.resetBoxes()
     GMGenie_Spy_InfoWindow_Character_Id:SetText(GMGenie.Spy.currentRequest["guid"]);
     GMGenie_Spy_InfoWindow_Account_Name:SetText(GMGenie.Spy.currentRequest["account"]);
     GMGenie_Spy_InfoWindow_Account_Id:SetText(GMGenie.Spy.currentRequest["accountId"]);
-    GMGenie_Spy_InfoWindow_Email_Email:SetText(GMGenie.Spy.currentRequest["email"]);
+	GMGenie_Spy_InfoWindow_Fingerprint_Fingerprint:SetText(GMGenie.Spy.currentRequest["fingerprint"]);
+    --GMGenie_Spy_InfoWindow_Email_Email:SetText(GMGenie.Spy.currentRequest["email"]);
     GMGenie_Spy_InfoWindow_IpLat_Ip:SetText(GMGenie.Spy.currentRequest["ip"]);
     if tonumber(GMGenie.Spy.currentRequest["latency"]) and tonumber(GMGenie.Spy.currentRequest["latency"]) > 1000 then
         GMGenie_Spy_InfoWindow_IpLat_Latency:SetFontObject(GenieFontRedSmall);
@@ -239,6 +248,13 @@ function GMGenie.Spy.loadDropdown(_, level)
     info.notCheckable = true;
     info.text = 'Lookup IP';
     info.func = GMGenie.Spy.lookupPlayerIp;
+    UIDropDownMenu_AddButton(info, level);
+	
+	local info = UIDropDownMenu_CreateInfo();
+    info.hasArrow = false;
+    info.notCheckable = true;
+    info.text = 'Lookup Fingerprint';
+    info.func = GMGenie.Spy.lookupPlayerFingerprint;
     UIDropDownMenu_AddButton(info, level);
 end
 
@@ -308,13 +324,18 @@ end
 function GMGenie.Spy.lookupPlayer()
     CloseDropDownMenus()
     SendChatMessage(".lookup player account " .. GMGenie.Spy.currentRequest["account"], "GUILD");
-    SendChatMessage(".lookup player email " .. GMGenie.Spy.currentRequest["email"], "GUILD");
+    --SendChatMessage(".lookup player email " .. GMGenie.Spy.currentRequest["email"], "GUILD");
     --SendChatMessage(".lookup player ip " .. GMGenie.Spy.currentRequest["ip"], "GUILD");
 end
 
 function GMGenie.Spy.lookupPlayerIp()
     CloseDropDownMenus()
     SendChatMessage(".lookup player ip " .. GMGenie.Spy.currentRequest["ip"], "GUILD");
+end
+
+function GMGenie.Spy.lookupPlayerFingerprint()
+    CloseDropDownMenus()
+    SendChatMessage(".lookup player fingerprint " .. GMGenie.Spy.currentRequest["fingerprint"], "GUILD");
 end
 
 local Saved_SetItemRef = SetItemRef;

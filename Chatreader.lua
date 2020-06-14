@@ -170,12 +170,17 @@ function ChatFrame_MessageEventHandler(self, event, ...)
                     local offline, name1, _, guid = string.match(arg1, "Player  ?(.*) %|cffffffff%|Hplayer:(.*)%|h%[(.*)%]%|h%|r %(guid: (.*)%)");
                     local phase = string.match(arg1, "Phase: (.*)");
                     local account, accountId, gmLevel = string.match(arg1, "Account: (.*) %(ID: (.*)%), GMLevel: (.*)");
+					local fingerprint = string.match(arg1, "Fingerprint: (.*)");
                     local login, failedLogins = string.match(arg1, "Last Login: (.*) %(Failed Logins: (.*)%)");
                     local os, latency = string.match(arg1, "OS: (.*) %- Latency: (.*) ms");
-                    local email = string.match(arg1, "Mail: (.*)");
+					
+					--[[
+					local email = string.match(arg1, "Mail: (.*)");
                     if not email then
                         email = string.match(arg1, "Email: (.*)");
                     end
+					--]]
+					
                     local ip, locked = string.match(arg1, "Last IP: (.*) %(Locked: (.*)%)");
                     local level = string.match(arg1, "Level: ([0-9]+)");
                     local race, class = string.match(arg1, "Race: (.*), (.*)");
@@ -201,6 +206,10 @@ function ChatFrame_MessageEventHandler(self, event, ...)
                         GMGenie.Spy.processPin03(account, accountId, gmLevel, arg1);
                         ActionTaken = true;
                     end
+					if fingerprint then
+                        GMGenie.Spy.processPin20(fingerprint, arg1);
+                        ActionTaken = true;
+                    end
                     if login then
                         GMGenie.Spy.processPin04(login, failedLogins, arg1);
                         ActionTaken = true;
@@ -209,10 +218,14 @@ function ChatFrame_MessageEventHandler(self, event, ...)
                         GMGenie.Spy.processPin05(os, latency, arg1);
                         ActionTaken = true;
                     end
+					
+					--[[
                     if email then
                         GMGenie.Spy.processPin06(email, arg1);
                         ActionTaken = true;
                     end
+					--]]
+					
                     if ip then
                         GMGenie.Spy.processPin07(ip, locked, arg1);
                         ActionTaken = true;
